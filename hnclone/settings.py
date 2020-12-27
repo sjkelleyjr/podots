@@ -99,6 +99,7 @@ WSGI_APPLICATION = 'hnclone.wsgi.application'
 
 # if RDS_HOSTNAME is set in the environment variables, it means we're running in elastic beanstalk and should connect to the postgres DB.
 if 'RDS_HOSTNAME' in os.environ:
+    # this AWS documentation was used to set up the RDS instance with elastic beanstalk: https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-rds.html
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
