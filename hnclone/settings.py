@@ -30,8 +30,9 @@ DEBUG = False
 
 USE_X_FORWARDED_HOST = True
 ALLOWED_HOSTS = [
-    'news.python.sc',
+    '172.31.46.37',
     'localhost',
+    'hacker-public-radio-dev.us-west-2.elasticbeanstalk.com'
 ]
 
 
@@ -96,12 +97,26 @@ WSGI_APPLICATION = 'hnclone.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+# if RDS_HOSTNAME is set in the environment variables, it means we're running in elastic beanstalk and should connect to the postgres DB.
+if 'RDS_HOSTNAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ['RDS_DB_NAME'],
+            'USER': os.environ['RDS_USERNAME'],
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'HOST': os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_PORT'],
+        }
     }
-}
+# otherwise, we connect to the locally hosted sqlite database for development purposes.
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation
@@ -166,9 +181,10 @@ LOGIN_REDIRECT_URL = '/'
 
 
 
-ACCEPT_UNINVITED_REGISTRATIONS = False
+ACCEPT_UNINVITED_REGISTRATIONS = True
 
 
-SITE_NAME = 'Pythonic News'
-SITE_URL = 'https://news.python.sc'
-SITE_DOMAIN = 'news.python.sc'
+SITE_NAME = 'Hacker Public Radio'
+#update these when we have a better domain name.
+SITE_URL = 'http://hacker-public-radio-dev.us-west-2.elasticbeanstalk.com/'
+SITE_DOMAIN = 'hacker-public-radio-dev.us-west-2.elasticbeanstalk.com'
