@@ -39,7 +39,7 @@
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:2px">
                 <tbody>
                     <tr>
-                        <td style="width:18px;padding-right:4px"><a href={% url 'index' %}><img alt="HPR Icon" src="{% static 'icon.png' %}" width="18" height="18" style="border:1px white solid; background-color: white;"></a></td>
+                        <td style="width:18px;padding-right:4px"><a href={% url 'index' %}><img class="site-icon" alt="Podots Icon" src="{% static 'icon.png' %}"></a></td>
                         <td style="line-height:12pt; height:10px;">
                             <span class="pagetop">
                             <b class="pnname">
@@ -62,7 +62,7 @@
                         <span class="pagetop">
                             {% if user.is_authenticated %}
                             {% url 'accounts_my_profile' as url %}
-                            <a href="{{ url }}" {% if url == request.path %}class="active"{% endif %}>{{user}}</a> ({{user.karma}}) 
+                            <a href="{{ url }}" {% if url == request.path %}class="active"{% endif %}>{{user}}</a> ({{user.karma}})
                             | <form method="POST" action="{% url 'logout' %}" class="logout-form">{% csrf_token %}&nbsp;<button class="logout-button">logout</button></form>
                             {% else %}
                             {% url 'login' as url %}

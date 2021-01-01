@@ -4,6 +4,7 @@
 {% if user.is_authenticated %}
 Signed in.
 {% else %}
+<article class="site-content-dense">
 <h2>Login</h2>
 <form method="post">
   {% csrf_token %}
@@ -11,5 +12,6 @@ Signed in.
   <button type="submit">Login</button>
 </form>
 <a href="{% url 'password_forgotten' %}">password forgotten?</a>
+</article>
 {% endif %}
 {% endblock content %}

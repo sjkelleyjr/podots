@@ -13,4 +13,7 @@
                     {% if item.text and not hide_text %}
                         {{ item.text | comment_markdown }}
                     {% endif %}
+                    {% if item.text and hide_text %}
+                          {{ item.text | slice:":200" | comment_markdown }}
+                    {% endif %}
 </div>

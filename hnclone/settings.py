@@ -185,7 +185,7 @@ LOGIN_REDIRECT_URL = '/'
 ACCEPT_UNINVITED_REGISTRATIONS = True
 
 
-SITE_NAME = 'Hacker Public Radio'
+SITE_NAME = 'Podots'
 #update these when we have a better domain name.
 SITE_URL = 'http://hacker-public-radio-dev.us-west-2.elasticbeanstalk.com/'
 SITE_DOMAIN = 'hacker-public-radio-dev.us-west-2.elasticbeanstalk.com'

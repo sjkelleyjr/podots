@@ -1,25 +1,59 @@
-/*
-
-https://www.schemecolor.com/python-logo-colors.php
-Cyan-Blue Azure     #4B8BBE
-Lapis Lazuli        #306998
-Shandy              #FFE873
-Sunglow             #FFD43B
-Granite Gray        #828282
-
-
-*/
-/* https://encycolorpedia.com/828282 */
 
 /* General formatting */
 
-body        { font-family:Verdana, Geneva, sans-serif; font-size:10pt; color:#828282; }
-td          { font-family:Verdana, Geneva, sans-serif; font-size:10pt; color:#828282; }
-.smaller    { font-size:7pt; }
+body        { font-family: Arial, Helvetica, sans-serif; }
+td, th      { font-family: Arial, Helvetica, sans-serif; }
+.smaller    { font-size:10pt; }
 
-input       { font-family:monospace; font-size:10pt; }
-input[type=\"submit\"] { font-family:Verdana, Geneva, sans-serif; }
-textarea    { font-family:monospace; font-size:10pt; }
+input[type=\"submit\"] { font-family: Arial, Helvetica, sans-serif; }
+input,
+textarea {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 98%;
+  border: 1px solid #ccc;
+  background: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+}
+
+.site-icon {
+  width: 35px;
+  height: 35px;
+}
+
+.td-content {
+  width: 85%;
+}
+
+.item-content
+{
+  display: block;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,.1);
+  background: #fff;
+}
+
+.item-content:hover
+{
+  -webkit-transition: box-shadow 0.3s ease-in-out;
+  -moz-transition: box-shadow 0.3s ease-in-out;
+  transition: box-shadow 0.3s ease-in-out;
+  box-shadow: 10px 10px 10px rgba(0,0,0,.1);
+}
+
+input:hover,
+textarea:hover  {
+  -webkit-transition: border-color 0.3s ease-in-out;
+  -moz-transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
+  border: 1px solid #aaa;
+}
 
 .clearfix { overflow: hidden; clear: both }
 
@@ -35,29 +69,62 @@ ul.horizontal-list li {
     display: inline-block;
 }
 
-button { padding: 0.25em; }
+button {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #8BC34A;
+  color: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+button:hover {
+  background: #689F38;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
 
 a { color: inherit; }
 .green { color:green; }
 
-/* top bar background color */
-nav#top-bar { background-color:#FF6601; }
-/* footer bar background color */
-nav#footer-bar { background-color:#FF6601; }
-/* footer text color */
-nav#footer-bar { color:#000000; }
-/* main list background color */
-main { background-color: #F6F6EF; }
-/* top bar text color */
-nav#top-bar * { color:#000000; }
+nav#top-bar * { color:#fff; }
+
+nav#top-bar *.active {
+    color: #bbb;
+    font-weight: bold;
+}
+
+nav#top-bar,
+nav#footer-bar {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 25px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,.1);
+  color: #fff;
+  background-color: #333;
+}
+
+nav#footer-bar {
+  text-align: center;
+}
+
+main { background-color: #FFFFFF; }
 
 .site-content { margin: 3%; }
-.site-content-dense  { margin: 1%; }
+.site-content-dense  {
+  width: 95%;
+  margin: 0 auto;
+  position: relative;
+}
 td {padding-right:8px; vertical-align: text-top;}
 #top-bar td {vertical-align: middle;}
 tr.spacer {height:1em;}
 
-.highlight {background-color:#FFE873;}
+.highlight {background-color:##DCEDC8;}
 .self-item {color: #4B8BBE;}
 
 .title > a {
@@ -68,31 +135,26 @@ tr.spacer {height:1em;}
     color: #999;
 }
 
-/* td {border:1px solid red;} */
-
 /* Site layout */
+.pnname {
+  padding-right: 25px;
+}
 
-nav#top-bar *.active {
-    color: #FFFFFF;
-    font-weight: bold;
+.pnname > a {
+  text-decoration: none;
 }
 
 #pnmain {
     width: 85%;
     margin: auto;
+    padding: 20px;
+    background: transparent;
 }
 
 /* footer line color */
 nav#pre-footer-bar > hr {
-    border-top: 2px solid #000000;
-    width: 95%;
+  border-color: transparent;
 }
-
-
-
-/* Item Layout */
-
-
 
 /* Forms */
 
@@ -104,13 +166,8 @@ form.logout-form {
 }
 
 .logout-button {
-    margin:0;
-    border:0;
-    padding:0;
-    background: transparent;
-    text-decoration: underline;
-    font-family:Verdana, Geneva, sans-serif; font-size:10pt;
-    cursor: pointer;
+  width: auto;
+  border-radius: 5px;
 }
 
 form.comment-form {
@@ -118,7 +175,7 @@ form.comment-form {
 }
 
 form.comment-form textarea {
-    width: 50%;
+    width: 98%;
     resize: vertical;
 }
 
@@ -208,21 +265,12 @@ and (max-width : 750px) {
         transform: scale(1.8);
     }
 
-    body        { font-family:Verdana, Geneva, sans-serif; font-size:12pt; color:#828282; }
-    td          { font-family:Verdana, Geneva, sans-serif; font-size:12pt; color:#828282; }
-    .smaller    { font-size:10pt; }
-
-    button {
-        background-color: #e3e3e3;
-        border: #828282;
-        color: #535353;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-    }
-
     form.comment-form textarea {
         width: 100%;
+    }
+
+    .td-content {
+      display: block;
     }
 
     div.arrow-up {
@@ -242,6 +290,5 @@ and (max-width : 750px) {
         border-width: 0.6em 0.2em 0 0.2em;
         border-color: #828282 transparent transparent transparent;
     }
-
 
 }

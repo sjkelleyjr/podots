@@ -2,8 +2,7 @@
 {% load static %}
 {% load news_extra %}
 
-
-            <tr id="{{item.pk}}">
+            <tr class='item-content' id="{{item.pk}}">
                 <td rowspan="2" class="rank">{%if rank %}{{rank}}.{% endif %}</td>
                 <td rowspan="2"><div>
 
@@ -23,11 +22,8 @@
                     {% endif %}
 
                     </div></td>
-                <td><!-- ROW 1--> {% if item.is_comment %}{% item_control item=item request_user=request_user %} {% else%} {% item_content item=item hide_text=hide_text %} {% endif %}</td>
+                <td class='td-content'><!-- ROW 1--> {% if item.is_comment %}{% item_content item=item request_user=request_user %} {% else%} {% item_content hide_text=hide_text item=item %} {% endif %}</td>
+                <td class='td-control'><!-- ROW 2--> {% if item.is_comment %}{% item_control item=item hide_text=hide_text %} {% else %}{% item_control item=item request_user=request_user %}{% endif %}</td>
             </tr>
-            <tr>
-                <td><!-- ROW 2--> {% if item.is_comment %}{% item_content item=item hide_text=hide_text %} {% else %}{% item_control item=item request_user=request_user %}{% endif %}</td>
-            </td>
-
 
             <tr class="spacer"></tr>
