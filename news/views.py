@@ -120,30 +120,6 @@ def index(request):
             return back
     return render(request, 'news/index.html', {'stories': stories, 'hide_text':True, 'page': page, 'rank_start': page*settings.PAGING_SIZE})
 
-
-@ratelimit(key="user_or_ip", group="news-get", rate=DEFAULT_GET_RATE, block=True)
-def show(request):
-    page = int(request.GET.get('p', 0))
-    stories = cache.get_or_set("news-show-%s"%(page), lambda: list(_front_page(page=page, add_filter={'is_show': True})), timeout=TIMEOUT_MEDIUM) # one minute
-    if len(stories) < 1 and page != 0:
-        back = _one_page_back(request)
-        if back:
-            return back
-    return render(request, 'news/index.html', {'stories': stories, 'hide_text':True, 'page': page, 'rank_start': page*settings.PAGING_SIZE})
-
-
-@ratelimit(key="user_or_ip", group="news-get", rate=DEFAULT_GET_RATE, block=True)
-def ask(request):
-    page = int(request.GET.get('p', 0))
-    stories = lambda: list(_front_page(page=page, add_filter={'is_ask': True}))
-    stories = cache.get_or_set("news-ask-%s"%(page), stories, timeout=TIMEOUT_MEDIUM) # one minute
-    if len(stories) < 1 and page != 0:
-        back = _one_page_back(request)
-        if back:
-            return back
-    return render(request, 'news/index.html', {'stories': stories, 'hide_text':True, 'page': page, 'rank_start': page*settings.PAGING_SIZE})
-
-
 @ratelimit(key="user_or_ip", group="news-get", rate=DEFAULT_GET_RATE, block=True)
 def newest(request): # Done
     page = int(request.GET.get('p', 0))
@@ -396,6 +372,3 @@ def humans_txt(request):
 🐍
     """, content_type='text/plain', charset='utf-8')
 
-
-def bookmarklet(request):
-    return render(request, 'news/bookmarklet.html')

@@ -21,9 +21,8 @@ class AddStoryForm(forms.ModelForm):
         url = self.cleaned_data.get('url')
         if not title:
             raise forms.ValidationError("Please provide a title.")
-        if (not text) and (not url):
-            raise forms.ValidationError("Please provide either a text or a URL.")
-
+        if not url:
+            raise forms.ValidationError("Please provide a URL.")
 
 
 class StoryForm(forms.ModelForm):
