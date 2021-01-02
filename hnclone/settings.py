@@ -32,7 +32,8 @@ USE_X_FORWARDED_HOST = True
 ALLOWED_HOSTS = [
     '172.31.46.37',
     'localhost',
-    'hacker-public-radio-dev.us-west-2.elasticbeanstalk.com'
+    'hacker-public-radio-dev.us-west-2.elasticbeanstalk.com',
+    'podots.com'
 ]
 
 
