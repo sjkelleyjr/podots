@@ -11,9 +11,9 @@
                     </span>
                     {% endif %}
                     {% if item.text and not hide_text %}
-                        {{ item.text | comment_markdown }}
+                        <div class='description'>{{ item.text | comment_markdown }}</div>
                     {% endif %}
                     {% if item.text and hide_text %}
-                          {{ item.text | slice:":200" | comment_markdown }}
+                        <div class='description'>{{ item.text | slice:":200" | comment_markdown }}</div>
                     {% endif %}
 </div>

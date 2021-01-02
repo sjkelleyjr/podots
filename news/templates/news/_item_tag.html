@@ -4,8 +4,9 @@
 
 <div class='item-card'>
   <div class='item-content' id="{{item.pk}}">
-    <div class="item-rank">{%if rank %}{{rank}}.{% endif %}</div>
-      <div>
+    <div class='item-rank-and-button'>
+      <div class='item-rank'>{%if rank %}{{rank}}.{% endif %}</div>
+      <div class='item-button'>
 
         {% user_arrows user=user item=item as assignment_options %}
 
@@ -27,10 +28,11 @@
         {% endif %}
 
       </div>
-      <!-- ROW 1--> {% if item.is_comment %}{% item_content item=item request_user=request_user %} {% else%} {% item_content hide_text=hide_text item=item %} {% endif %}
+    </div>
+    <!-- ROW 1--> {% if item.is_comment %}{% item_content item=item request_user=request_user %} {% else%} {% item_content hide_text=hide_text item=item %} {% endif %}
   </div>
 
   <div class='item-control'>
-      <!-- ROW 2--> {% if item.is_comment %}{% item_control item=item hide_text=hide_text %} {% else %}{% item_control item=item request_user=request_user %}{% endif %}
+    <!-- ROW 2--> {% if item.is_comment %}{% item_control item=item hide_text=hide_text %} {% else %}{% item_control item=item request_user=request_user %}{% endif %}
   </div>
 </div>
