@@ -126,11 +126,16 @@ td {padding-right:8px; vertical-align: text-top;}
 #top-bar td {vertical-align: middle;}
 tr.spacer {height:1em;}
 
-.highlight {background-color:##DCEDC8;}
-.self-item {color: #4B8BBE;}
+.highlight { background-color:#DCEDC8; }
+.self-item {
+  color: #689F38;
+  padding: 5px;
+}
 
+.item-rank,
 .title > a {
-    text-decoration: none;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .title > a:visited {
@@ -199,30 +204,40 @@ form.comment-form ul {
 .vote-button {
     background: transparent;
     display: block;
-    padding: 5px;
-    padding-top: 4px;
-    border: 0;
+    padding: 8px;
+    padding-top: 0px;
+}
+
+.vote-button:hover {
+  background: transparent;
 }
 
 /* http://apps.eky.hk/css-triangle-generator/ */
+div.arrow-up:hover,
+div.arrow-down:hover {
+  border-color: #689F38;
+  -webkit-transition: border-color 0.3s ease-in-out;
+  -moz-transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
+}
+
 div.arrow-up {
-    position:relative;
-    top:-2px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 0.3em 0.7em 0.3em;
-    border-color: transparent transparent #828282 transparent;
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
 }
 
 div.arrow-down {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0.7em 0.3em 0 0.3em;
-    border-color: #828282 transparent transparent transparent;
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 }
-
 
 .controls { line-height:6pt; vertical-align: text-top;  }
 
@@ -270,26 +285,7 @@ and (max-width : 750px) {
         width: 100%;
     }
 
-    .td-content {
-      display: block;
+    .vote-button {
+        padding-top: 2px;
     }
-
-    div.arrow-up {
-        position:relative;
-        top:-2px;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 0 0.2em 0.6em 0.2em;
-        border-color: transparent transparent #828282 transparent;
-    }
-
-    div.arrow-down {
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 0.6em 0.2em 0 0.2em;
-        border-color: #828282 transparent transparent transparent;
-    }
-
 }

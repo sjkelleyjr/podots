@@ -4,8 +4,7 @@
 
 <div class='item-card'>
   <div class='item-content' id="{{item.pk}}">
-    <td rowspan="2" class="rank">{%if rank %}{{rank}}.{% endif %}</td>
-    <td rowspan="2">
+    <div class="item-rank">{%if rank %}{{rank}}.{% endif %}</div>
       <div>
 
         {% user_arrows user=user item=item as assignment_options %}
@@ -28,13 +27,10 @@
         {% endif %}
 
       </div>
-    </td>
-    <td class='td-content'>
-      <!-- ROW 1--> {% if item.is_comment %}{% item_content item=item request_user=request_user %} {% else%} {% item_content hide_text=hide_text item=item %} {% endif %}</td>
+      <!-- ROW 1--> {% if item.is_comment %}{% item_content item=item request_user=request_user %} {% else%} {% item_content hide_text=hide_text item=item %} {% endif %}
   </div>
 
   <div class='item-control'>
-    <td class='td-control'>
-      <!-- ROW 2--> {% if item.is_comment %}{% item_control item=item hide_text=hide_text %} {% else %}{% item_control item=item request_user=request_user %}{% endif %}</td>
+      <!-- ROW 2--> {% if item.is_comment %}{% item_control item=item hide_text=hide_text %} {% else %}{% item_control item=item request_user=request_user %}{% endif %}
   </div>
 </div>
