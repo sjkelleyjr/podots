@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
     // Highlight the posted comment, if comment-id is in url hash
-    if(e = document.getElementById(window.location.hash.substring(1))) e.classList.add('highlight');
+    if(e = document.getElementById(window.location.hash.substring(1))) e.parentNode.classList.add('highlight');
 
     function getFormData(form) {
         var data = {};
