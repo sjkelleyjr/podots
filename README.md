@@ -1,11 +1,7 @@
 
-# pythonic-news
-A Hacker News lookalike written in Python/Django, powering [https://news.python.sc](https://news.python.sc)
+# Podots
 
-
-
-[![screenshot](http://cdn.sebastiansteins.com/screenshot-news-python-sc.png "Screenshot")](https://news.python.sc)
-
+A community driven podcast exploration platform written in Python/Django and forked from pythonic-news.
 
 ## Setup for local development
 
