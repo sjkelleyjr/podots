@@ -7,10 +7,6 @@ td, th {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.smaller {
-  font-size: 10pt;
-}
-
 input[type=\"submit\"] {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -20,6 +16,7 @@ textarea {
   font-family: Arial, Helvetica, sans-serif;
   width: 98%;
   border: 1px solid #ccc;
+  border-radius: 5px;
   background: #FFF;
   margin: 0 0 5px;
   padding: 10px;
@@ -27,6 +24,10 @@ textarea {
 
 table {
   width: 100%;
+}
+
+.smaller {
+  font-size: 10pt;
 }
 
 .site-icon {
@@ -69,6 +70,7 @@ table {
   -moz-transition: background-color 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
   background-color: #689F38;
+  color: #fff;
 }
 
 input:hover,
@@ -98,27 +100,43 @@ ul.horizontal-list li {
   display: inline-block;
 }
 
+.login-button,
+.register-button,
 button {
   cursor: pointer;
   width: 100%;
-  border: none;
+  border: 1px solid #aaa;
   border-radius: 5px;
   background: #8BC34A;
   color: #FFF;
-  margin: 0 0 5px;
   padding: 10px;
   font-size: 15px;
+  text-transform: uppercase;
+  text-align: center;
 }
 
+.login-button:hover,
+.register-button:hover,
 button:hover {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   background: #689F38;
-  -webkit-transition: background-color 0.3s ease-in-out;
-  -moz-transition: background-color 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out;
+  border: 1px solid #111;
+}
+
+.login-button,
+.register-button {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 a {
   color: inherit;
+}
+
+a:hover {
+  color: #8BC34A;
 }
 
 .green {
@@ -127,6 +145,7 @@ a {
 
 nav#top-bar * {
   color: #fff;
+  text-decoration: none;
 }
 
 nav#top-bar *.active {
@@ -142,37 +161,39 @@ nav#footer-bar {
   margin-bottom: 25px;
   color: #fff;
   background-color: #333;
+  align-items: center;
+  display: flex;
 }
 
 nav#footer-bar {
   text-align: center;
+  display: block;
 }
 
 main {
   background-color: #FFFFFF;
 }
 
-.site-content {
-  margin: 3%;
+.main-menu {
+  margin: auto;
+  margin-left: 10px;
+}
+
+.user-menu {
+  display: flex;
+  margin-right: 0px;
+  align-items: center;
+}
+
+.user-menu button {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .site-content-dense {
   width: 95%;
   margin: 0 auto;
   position: relative;
-}
-
-td {
-  padding-right: 8px;
-  vertical-align: text-top;
-}
-
-#top-bar td {
-  vertical-align: middle;
-}
-
-tr.spacer {
-  height: 1em;
 }
 
 .highlight {
@@ -225,6 +246,7 @@ form.logout-form {
   display: inline;
 }
 
+.add-new-button,
 .logout-button {
   width: auto;
   border-radius: 5px;
@@ -257,6 +279,7 @@ form.comment-form ul {
 .vote-button {
   background: transparent;
   display: block;
+  border: none;
   padding: 5px;
   padding-left: 0px;
 }
@@ -319,11 +342,13 @@ div.arrow-down {
   padding-top: 0;
 }
 
-/* mobile device */
+/******************************* mobile device *******************************/
 @media only screen and (min-width : 300px) and (max-width : 750px) {
+
   #pnmain {
     width: 100%;
     margin: 0;
+    width: auto;
   }
 
   body {
@@ -333,27 +358,33 @@ div.arrow-down {
     -webkit-text-size-adjust: none;
   }
 
-  td {
-    height: inherit !important;
-  }
-
   .title, .comment {
     font-size: inherit;
   }
 
-  span.pagetop {
+  span.pagetop,
+  .user-menu {
     display: block;
     margin: 3px 5px;
     font-size: 12px;
   }
 
+  .user-menu {
+    text-align: center;
+  }
+
+  .login-button,
+  .register-button,
+  .user-menu button {
+    margin: 2px;
+    font-size: 12px;
+    padding: 2px 10px;
+    width: 100%;
+  }
+
   span.pagetop b {
     display: block;
     font-size: 15px;
-  }
-
-  #pnmain {
-    width: auto;
   }
 
   .site-content-dense {
