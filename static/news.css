@@ -25,21 +25,22 @@ table {
   height: 35px;
 }
 
-.td-content {
-  width: 85%;
+.item-content {
+  display: flex;
+  padding-bottom: 10px;
 }
 
-.item-content
-{
+.item-card {
   display: block;
   border: 1px solid #aaa;
   border-radius: 5px;
   padding: 10px;
   box-shadow: 5px 5px 5px rgba(0,0,0,.1);
   background: #fff;
+  margin-bottom: 25px;
 }
 
-.item-content:hover
+.item-card:hover
 {
   -webkit-transition: box-shadow 0.3s ease-in-out;
   -moz-transition: box-shadow 0.3s ease-in-out;
@@ -73,6 +74,7 @@ button {
   cursor: pointer;
   width: 100%;
   border: none;
+  border-radius: 5px;
   background: #8BC34A;
   color: #FFF;
   margin: 0 0 5px;
@@ -82,8 +84,8 @@ button {
 
 button:hover {
   background: #689F38;
-  -webkit-transition: background 0.3s ease-in-out;
-  -moz-transition: background 0.3s ease-in-out;
+  -webkit-transition: background-color 0.3s ease-in-out;
+  -moz-transition: background-color 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
 }
 
@@ -190,17 +192,16 @@ form.comment-form ul {
 
 .vote-form {
     border: 0;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
 
 .vote-button {
-    background:transparent;
-    display:block;
-    padding:0;
-    padding-top:4px;
-    /* border: 1px solid red; */
-    border:0;
+    background: transparent;
+    display: block;
+    padding: 5px;
+    padding-top: 4px;
+    border: 0;
 }
 
 /* http://apps.eky.hk/css-triangle-generator/ */

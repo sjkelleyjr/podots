@@ -11,14 +11,9 @@
 {% block content %}
 <article class="site-content-dense">
 
-
-
-<table  border="0" cellpadding="0" cellspacing="0" class="item-list">
+<div class="item-list">
         {% news_item item=item rank=None hide_text=False user=user %}
-</table>
-
-
-
+</div>
 
 {% if comment_form %}
 <form method="POST" class="comment-form clearfix">{% csrf_token %}
@@ -39,21 +34,18 @@
 <br><br>
 
 
-<table  border="0" cellpadding="0" cellspacing="0" class="item-list">
+<div class="item-list">
     {% recursetree item.comments.all  %}
             {% news_item item=node rank=None show_text=True hide_text=False user=user %}
             {% if not node.is_leaf_node %}
-            <tr><td colspan="3" style="padding-left:30px;">
-                    <table border="0" cellpadding="0" cellspacing="0" class="item-list";">
+            <div style="padding-left:30px;">
+                    <div class="item-list">
                         {{ children }}
-                    </table>
-            </td></tr>
+                    </div>
+                  </div>
             {% endif %}
     {% endrecursetree %}
-</table>
-
-
-
+</div>
 
 </article>
 {% endblock content %}

@@ -2,28 +2,39 @@
 {% load static %}
 {% load news_extra %}
 
-            <tr class='item-content' id="{{item.pk}}">
-                <td rowspan="2" class="rank">{%if rank %}{{rank}}.{% endif %}</td>
-                <td rowspan="2"><div>
+<div class='item-card'>
+  <div class='item-content' id="{{item.pk}}">
+    <td rowspan="2" class="rank">{%if rank %}{{rank}}.{% endif %}</td>
+    <td rowspan="2">
+      <div>
 
-                    {% user_arrows user=user item=item as assignment_options %}
+        {% user_arrows user=user item=item as assignment_options %}
 
-                    {% if 'star' in assignment_options %}
-                    <span class="self-item">*</span>
-                    {% endif %}
-                    {% if 'up' in assignment_options %}
-                    <form class="vote-form upvote" method="POST" action="{% url 'upvote' pk=item.pk %}">{% csrf_token %}  <button type="submit" class="vote-button" aria-label="Upvote"><div class="arrow-up"></div></button></form>
-                    {% endif %}
-                    {% if 'down' in assignment_options %}
-                    <form class="vote-form downvote" method="POST" action="{% url 'downvote' pk=item.pk %}">{% csrf_token %}<button type="submit" class="vote-button" aria-label="Downvote"><div class="arrow-down"></div></button></form>
-                    {% endif %}
-                    {% if not assignment_options %}
-                    &nbsp;
-                    {% endif %}
+        {% if 'star' in assignment_options %}
+        <span class="self-item">*</span>
+        {% endif %}
+        {% if 'up' in assignment_options %}
+        <form class="vote-form upvote" method="POST" action="{% url 'upvote' pk=item.pk %}">{% csrf_token %} <button type="submit" class="vote-button" aria-label="Upvote">
+            <div class="arrow-up"></div>
+          </button></form>
+        {% endif %}
+        {% if 'down' in assignment_options %}
+        <form class="vote-form downvote" method="POST" action="{% url 'downvote' pk=item.pk %}">{% csrf_token %}<button type="submit" class="vote-button" aria-label="Downvote">
+            <div class="arrow-down"></div>
+          </button></form>
+        {% endif %}
+        {% if not assignment_options %}
+        &nbsp;
+        {% endif %}
 
-                    </div></td>
-                <td class='td-content'><!-- ROW 1--> {% if item.is_comment %}{% item_content item=item request_user=request_user %} {% else%} {% item_content hide_text=hide_text item=item %} {% endif %}</td>
-                <td class='td-control'><!-- ROW 2--> {% if item.is_comment %}{% item_control item=item hide_text=hide_text %} {% else %}{% item_control item=item request_user=request_user %}{% endif %}</td>
-            </tr>
+      </div>
+    </td>
+    <td class='td-content'>
+      <!-- ROW 1--> {% if item.is_comment %}{% item_content item=item request_user=request_user %} {% else%} {% item_content hide_text=hide_text item=item %} {% endif %}</td>
+  </div>
 
-            <tr class="spacer"></tr>
+  <div class='item-control'>
+    <td class='td-control'>
+      <!-- ROW 2--> {% if item.is_comment %}{% item_control item=item hide_text=hide_text %} {% else %}{% item_control item=item request_user=request_user %}{% endif %}</td>
+  </div>
+</div>

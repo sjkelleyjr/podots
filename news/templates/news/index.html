@@ -7,25 +7,22 @@
 
 {% block content %}
 <article class="site-content-dense">
-<table border="0" cellpadding="0" cellspacing="0" class="item-list outer level-0">
+<div class="item-list outer level-0">
         {% for story in stories %}
                 {% news_item item=story show_text=False hide_text=hide_text rank=forloop.counter|add:rank_start user=user %}
                 {% if show_children %}
-                    <tr><td></td><td></td><td>
+
                         {% recursetree story.comments.all  %}
-                        <table border="0" cellpadding="0" cellspacing="0" class="item-list inner level-{{node.level}}" style="">
+                        <div class="item-list inner level-{{node.level}}">
                             {% news_item item=node show_text=True hide_text=hide_text rank=None user=user %}
                             {% if not node.is_leaf_node %}
-                                <tr><td></td><td></td><td>
                                     {{ children }}
-                                </td></tr>
                             {% endif %}
-                        </table>
+                        </div>
                         {% endrecursetree %}
-                    </td></tr>
                 {% endif %}
         {% endfor %}
-</table>
+</div>
 
 
 
