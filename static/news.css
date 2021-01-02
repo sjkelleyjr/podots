@@ -286,6 +286,7 @@ form.comment-form ul {
 
 .vote-button:hover {
   background: transparent;
+  border: none;
 }
 
 div.arrow-up:hover,
