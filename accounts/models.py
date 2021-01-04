@@ -62,7 +62,7 @@ class Invitation(models.Model):
 
     def get_absolute_url(self):
         return reverse("accounts_invite", kwargs={"pk": self.pk})
-    
+
     def get_register_url(self):
         return reverse("accounts_register") + '?invite=' + str(self.invite_code)
 
@@ -93,6 +93,7 @@ class PasswordResetRequest(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     changed_at = models.DateTimeField(auto_now=True)
 
+    email = models.EmailField()
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     verification_code = models.UUIDField(primary_key=False, default=uuid.uuid4, editable=False)
 

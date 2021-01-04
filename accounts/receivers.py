@@ -22,16 +22,16 @@ def lower_email_addresses(sender, instance, **kwargs):
 @receiver(post_save)
 def send_invitation_email(sender, instance, created, **kwargs):
     if created and isinstance(instance, Invitation):
-        subject, from_email, to = 'You have been invited to %s'%(settings.SITE_DOMAIN), 'bot@python.sc', instance.invited_email_address
+        subject, from_email, to = 'You have been invited to %s'%(settings.SITE_DOMAIN), 'bot@podots.com', instance.invited_email_address
         text_content = """
-You have been invited to news.python.sc.
+You have been invited to podots.com.
 
 Would you like to accept {inviting_user}'s invite?
 
-Please sign up here: https://news.python.sc{url}
+Please sign up here: https://podots.com{url}
 
--- 
-news.python.sc - A social news aggregator for the Python community.
+--
+podots.com - Your favorite podcast and your favorite host await for you!
 
 """.format(inviting_user=instance.inviting_user.username, url=instance.get_register_url())
         #html_content = '<p>This is an <strong>important</strong> message.</p>'
@@ -51,7 +51,7 @@ def create_verification(sender, instance, created, **kwargs):
                 verified = any([i.verified for i in verifications])
                 # create_v = not verified
                 create_v = False
-            
+
             if create_v:
                 verification = EmailVerification(user=instance, email=instance.email)
                 verification.save()
@@ -60,14 +60,14 @@ def create_verification(sender, instance, created, **kwargs):
 @receiver(post_save)
 def send_verification_email(sender, instance, created, **kwargs):
     if created and isinstance(instance, EmailVerification):
-        subject, from_email, to = 'Please confirm your account on news.python.sc', 'bot@python.sc', instance.email
+        subject, from_email, to = 'Please confirm your account on podots.com', 'bot@podots.com', instance.email
         text_content = """
 Please confirm your email address here:
 
-https://news.python.sc{url}
+https://podots.com{url}
 
--- 
-news.python.sc - A social news aggregator for the Python community.
+--
+podots.com - Your favorite podcast and your favorite host await for you!
 
 """.format(url=instance.get_verify_url())
         #html_content = '<p>This is an <strong>important</strong> message.</p>'
@@ -79,14 +79,14 @@ news.python.sc - A social news aggregator for the Python community.
 @receiver(post_save)
 def send_password_reset_email(sender, instance, created, **kwargs):
     if created and isinstance(instance, PasswordResetRequest):
-        subject, from_email, to = 'Reset password for your account on news.python.sc', 'bot@python.sc', instance.email
+        subject, from_email, to = 'Reset password for your account on podots.com', 'bot@podots.com', instance.email
         text_content = """
-Please confirm your email address here:
+Finish resetting your password by following the link:
 
-https://news.python.sc{url}
+https://podots.com{url}
 
--- 
-news.python.sc - A social news aggregator for the Python community.
+--
+podots.com - Your favorite podcast and your favorite host await for you!
 
 """.format(url=instance.get_verify_url())
         #html_content = '<p>This is an <strong>important</strong> message.</p>'

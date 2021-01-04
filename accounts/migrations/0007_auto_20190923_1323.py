@@ -32,6 +32,7 @@ class Migration(migrations.Migration):
                 ('changed_at', models.DateTimeField(auto_now=True)),
                 ('verification_code', models.UUIDField(default=uuid.uuid4, editable=False)),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('email', models.EmailField(blank=True, max_length=254, verbose_name='email address')),
             ],
         ),
     ]

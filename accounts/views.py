@@ -6,10 +6,11 @@ from django.contrib.auth import logout as do_logout
 from django.urls import reverse
 from django.conf import settings
 from django.utils import timezone
+from django.contrib import messages
 
 
-from .models import CustomUser, Invitation, EmailVerification
-from .forms import ProfileForm, RegisterForm, CreateInviteForm, PasswordForgottenForm, PasswortResetForm
+from .models import CustomUser, Invitation, EmailVerification, PasswordResetRequest
+from .forms import ProfileForm, RegisterForm, CreateInviteForm, PasswordForgottenForm, PasswordResetForm
 
 
 def profile(request, username=None):
@@ -60,8 +61,8 @@ def register(request):
         invitation = Invitation.objects.get(invite_code=invite_code)
     except:
         invitation = None
-    instance = CustomUser(used_invitation=invitation, 
-                          parent=getattr(invitation, 'inviting_user', None), 
+    instance = CustomUser(used_invitation=invitation,
+                          parent=getattr(invitation, 'inviting_user', None),
                           email=getattr(invitation, 'invited_email_address', None))
     if not settings.ACCEPT_UNINVITED_REGISTRATIONS and (invitation is None or not getattr(invitation, 'active', False)):
         return render(request, 'accounts/register_closed.html')
@@ -115,22 +116,25 @@ def password_forgotten(request, verification_code=None):
                 pass
             if user:
                 if user.email == user.latest_verified_email:
-                    reset_request = PasswordResetRequest(user=user)
+                    reset_request = PasswordResetRequest(user=user, email=user.email)
                     reset_request.save()
                     return HttpResponseRedirect(reverse('password_forgotten')+'?sent')
                 else:
                     error = 'This user does not have a verified email. Please contact support.'
+                    messages.error(request, error)
             else:
                 error = 'User not found.'
+                messages.error(request, error)
         return render(request, 'accounts/password_forgotten_form.html', {'form': form, 'error': error})
     else:
         reset_request = get_object_or_404(PasswordResetRequest, verification_code=verification_code)
-        form = PasswortResetForm(request.POST or None)
+        form = PasswordResetForm(request.POST or None)
         if request.method=="POST":
             if form.is_valid():
                 reset_request.user.set_password(form.cleaned_data['password']) # TODO: confirm password, password rules
                 reset_request.user.save()
-                return HttpResponseRedirect(reverse('/login'))
+                redirect_url = settings.LOGIN_REDIRECT_URL or '/'
+                return HttpResponseRedirect(redirect_url)
         return render(request, 'accounts/password_forgotten_form.html', {'form': form})
 
 
@@ -142,4 +146,3 @@ def logout(request):
         return HttpResponseRedirect(redirect_url)
     else:
         return render(request, 'accounts/logout.html')
-

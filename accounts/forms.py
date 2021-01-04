@@ -6,7 +6,7 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = CustomUser
         fields = ['about', 'email']
-    
+
     def clean_email(self):
         data = self.cleaned_data['email']
         if data:
@@ -33,7 +33,7 @@ class CreateInviteForm(forms.ModelForm):
     class Meta:
         model = Invitation
         fields = ['invited_email_address']
-    
+
     def clean_invited_email_address(self):
         invited_email_address = self.cleaned_data['invited_email_address']
         if invited_email_address:
@@ -44,5 +44,5 @@ class CreateInviteForm(forms.ModelForm):
 class PasswordForgottenForm(forms.Form):
     username = forms.CharField()
 
-class PasswortResetForm(forms.Form):
+class PasswordResetForm(forms.Form):
     password = forms.CharField()
