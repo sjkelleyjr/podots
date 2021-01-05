@@ -185,6 +185,11 @@ LOGIN_REDIRECT_URL = '/'
 
 ACCEPT_UNINVITED_REGISTRATIONS = True
 
+EMAIL_HOST = os.environ['RDS_EMAIL_HOST']
+EMAIL_USE_TLS = True
+EMAIL_PORT = 465
+EMAIL_HOST_USER = os.environ['RDS_EMAIL_USER']
+EMAIL_HOST_PASSWORD = os.environ['RDS_EMAIL_PASS']
 
 SITE_NAME = 'Podots'
 #update these when we have a better domain name.
