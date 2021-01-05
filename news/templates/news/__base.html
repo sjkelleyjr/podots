@@ -37,38 +37,65 @@
   <title>{% block title %}{% endblock title %}{{SITE_NAME}}</title>
 </head>
 
+<div id="header">
+  <nav id="top-bar">
+    <a href={% url 'index' %}><img class="site-icon" alt="Podots Icon" src="{% static 'icon.png' %}"></a></td>
+
+    <div class='main-menu'>
+      <span class="pagetop">
+        <b class="pnname">
+          <a href="{% url 'index' %}">{{SITE_NAME}}</a></b>
+        {% url 'newest' as url %}
+        <a href="{{ url }}" {% if url == request.path %}class="active" {% endif %}>newest</a>
+      </span>
+    </div>
+
+    <div class='user-menu'>
+      {% if user.is_authenticated %}
+      {% url 'accounts_my_profile' as url %}
+      <div class='user-profile'> <a href="{{ url }}" {% if url == request.path %}class="active" {% endif %}>{{user}}</a> ({{user.karma}}) </div>
+      {% url 'submit' as url %}
+      <form method="POST" action="{{ url }}" class="add-new-form">{% csrf_token %}<button class="add-new-button">new post</button></form>
+      <form method="POST" action="{% url 'logout' %}" class="logout-form">{% csrf_token %}<button class="logout-button">logout</button></form>
+      {% else %}
+      {% url 'login' as url %}
+      <a class='login-button' href="{{ url }}" {% if url == request.path %}class="active" {% endif %}>login</a>
+      {% url 'accounts_register' as url %}
+      <a class='register-button' href="{{ url }}" {% if url == request.path %}class="active" {% endif %}>register</a>
+      {% endif %}
+    </div>
+  </nav>
+</div>
+
+{% if not user.is_authenticated %}
+<div class="welcome-section">
+  <div class="welcome-image">
+    <div id="welcome-text">
+      <h1>WELCOME TO PODOTS!</h1>
+
+      <h2 style="color: #8BC34A">You don't know what podcast to listen next?</h2>
+      <h3>Are all the platforms recommending the same shows?</h3>
+      <h4>Let other people recommend you what's best and fresh, all in endless pages of awesomeness.</h4>
+      <h3>Create an account now and submit your favorite podcast!</h3>
+
+      <a id='create-account-button' href="{{ url }}" {% if url == request.path %}class="active" {% endif %}>Create an account!</a>
+
+      <br><br>
+      <p> This message will automagically disappear when you login into your account. </p>
+    </div>
+  </div>
+</div>
+{% endif %}
 
 <body>
-  <main id="pnmain">
-    <nav id="top-bar">
-      <a href={% url 'index' %}><img class="site-icon" alt="Podots Icon" src="{% static 'icon.png' %}"></a></td>
-      <div class='main-menu'>
-        <span class="pagetop">
-          <b class="pnname">
-            <a href="{% url 'index' %}">{{SITE_NAME}}</a></b>
-          {% url 'newest' as url %}
-          <a href="{{ url }}" {% if url == request.path %}class="active" {% endif %}>newest</a>
-        </span>
-      </div>
+  <div id="pnmain">
 
-      <div class='user-menu'>
-        {% if user.is_authenticated %}
-        {% url 'accounts_my_profile' as url %}
-        <div class='user-profile'> <a href="{{ url }}" {% if url == request.path %}class="active" {% endif %}>{{user}}</a> ({{user.karma}}) </div>
-        {% url 'submit' as url %}
-        <form method="POST" action="{{ url }}" class="add-new-form">{% csrf_token %}<button class="add-new-button">new post</button></form>
-        <form method="POST" action="{% url 'logout' %}" class="logout-form">{% csrf_token %}<button class="logout-button">logout</button></form>
-        {% else %}
-        {% url 'login' as url %}
-        <a class='login-button' href="{{ url }}" {% if url == request.path %}class="active" {% endif %}>login</a>
-        {% url 'accounts_register' as url %}
-        <a class='register-button' href="{{ url }}" {% if url == request.path %}class="active" {% endif %}>register</a>
-        {% endif %}
-      </div>
-    </nav>
+    {% block content %}
+    {% endblock content %}
 
-    {% block content %}{% endblock content %}
+  </div>
 
+  <div id="footer">
     <nav id="pre-footer-bar">
       <hr>
       {% if not prevent_footer_subscription_form %}
@@ -76,11 +103,11 @@
       {% endif %}
     </nav>
 
-
     <nav id="footer-bar">
       <p class="smaller">{{SITE_NAME}} is a community to submit your favorite podcast episodes to.</p>
     </nav>
-  </main>
+  </div>
+
   <script type="text/javascript" src="{% static 'news.js'%}"></script>
 </body>
 

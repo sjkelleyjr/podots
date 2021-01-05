@@ -1,6 +1,15 @@
 /* General formatting */
+h1, h2, h3, h4, p, a, * {
+  color: #fff;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background-color: #000;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  -webkit-text-size-adjust: none;
 }
 
 td, th {
@@ -20,6 +29,7 @@ textarea {
   background: #FFF;
   margin: 0 0 5px;
   padding: 10px;
+  color: #000;
 }
 
 table {
@@ -37,40 +47,72 @@ table {
 
 .item-content {
   display: flex;
-  padding-bottom: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #555;
+}
+
+.item-control {
+  padding: 10px;
 }
 
 .more-link,
 .item-card {
   display: block;
-  border: 1px solid #aaa;
-  border-radius: 5px;
-  padding: 10px;
-  background: #fff;
-  margin-bottom: 15px;
+  position: relative;
+  margin: 0.5rem 0 1rem 0;
+  background-color: #222;
+  border-radius: 2px;
+  border: 1px solid #555;
+}
+
+.welcome-image {
+  background-image: url('welcome_image.jpg');
+
+  background-size: cover;
+  background-position: bottom, bottom;
+  width: auto;
+  height: 100%;
+}
+
+#welcome-text {
+  width: 85%;
+  margin: auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .more-link:hover,
 .item-card:hover {
-  -webkit-transition: border-color 0.3s ease-in-out;
-  -moz-transition: border-color 0.3s ease-in-out;
-  transition: border-color 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   border-color: #111;
+  border: 1px solid #aaa;
 }
 
 .more-link {
-  background-color: #8BC34A;
-  color: #fff;
+  padding: 10px;
+  color: #8BC34A;
+  border: 1px solid #8BC34A;
   text-decoration: none;
   text-align: center;
+}
+
+.item-card:hover {
+  background-color: #222;
 }
 
 .more-link:hover {
   -webkit-transition: background-color 0.3s ease-in-out;
   -moz-transition: background-color 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
-  background-color: #689F38;
+  background-color: #8BC34A;
   color: #fff;
+}
+
+.description {
+  color: rgba(55, 53, 47, 0.6);
+  font-size: 12px;
 }
 
 input:hover,
@@ -100,15 +142,27 @@ ul.horizontal-list li {
   display: inline-block;
 }
 
+#create-account-button {
+  text-decoration: none;
+  background-color: #8BC34A;
+  padding: 10px;
+  font-weight: 700;
+  border-radius: 5px;
+}
+
+#create-account-button:hover {
+  color: #fff;
+}
+
 .login-button,
 .register-button,
 button {
   cursor: pointer;
   width: 100%;
-  border: 1px solid #aaa;
+  border: 1px solid #8BC34A;
+  color: #8BC34A;
   border-radius: 5px;
-  background: #8BC34A;
-  color: #FFF;
+  background-color: transparent;
   padding: 10px;
   font-size: 15px;
   text-transform: uppercase;
@@ -121,7 +175,8 @@ button:hover {
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  background: #689F38;
+  background-color: #8BC34A;
+  color: #fff;
   border: 1px solid #111;
 }
 
@@ -140,11 +195,20 @@ a:hover {
 }
 
 .green {
-  color: green;
+  color: #bbb;
+}
+
+#header {
+  background-color: #333;
+  border-bottom: 1px solid #555;
+}
+
+#footer {
+  background-color: #333;
+  border-top: 1px solid #555;
 }
 
 nav#top-bar * {
-  color: #fff;
   text-decoration: none;
 }
 
@@ -156,13 +220,11 @@ nav#top-bar *.active {
 nav#top-bar,
 nav#footer-bar {
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 25px;
   color: #fff;
-  background-color: #333;
   align-items: center;
   display: flex;
+  width: 85%;
+  margin: auto;
 }
 
 nav#footer-bar {
@@ -207,8 +269,13 @@ main {
 
 .item-rank,
 .title>a {
+  color: #fff;
   font-weight: bold;
   text-decoration: none;
+}
+
+.title>a:hover {
+  color: #8BC34A;
 }
 
 .title>a:visited {
@@ -298,16 +365,17 @@ div.arrow-down:hover {
 }
 
 div.arrow-up {
-  border: solid black;
+  border: solid #fff;
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
+  border-color: #fff;
 }
 
 div.arrow-down {
-  border: solid black;
+  border: solid #fff;
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
@@ -350,13 +418,6 @@ div.arrow-down {
     width: 100%;
     margin: 0;
     width: auto;
-  }
-
-  body {
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    -webkit-text-size-adjust: none;
   }
 
   .title, .comment {
