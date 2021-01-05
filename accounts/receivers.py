@@ -22,7 +22,7 @@ def lower_email_addresses(sender, instance, **kwargs):
 @receiver(post_save)
 def send_invitation_email(sender, instance, created, **kwargs):
     if created and isinstance(instance, Invitation):
-        subject, from_email, to = 'You have been invited to %s'%(settings.SITE_DOMAIN), 'bot@podots.com', instance.invited_email_address
+        subject, from_email, to = 'You have been invited to %s'%(settings.SITE_DOMAIN), 'noreply@podots.com', instance.invited_email_address
         text_content = """
 You have been invited to podots.com.
 
@@ -60,7 +60,7 @@ def create_verification(sender, instance, created, **kwargs):
 @receiver(post_save)
 def send_verification_email(sender, instance, created, **kwargs):
     if created and isinstance(instance, EmailVerification):
-        subject, from_email, to = 'Please confirm your account on podots.com', 'bot@podots.com', instance.email
+        subject, from_email, to = 'Please confirm your account on podots.com', 'noreply@podots.com', instance.email
         text_content = """
 Please confirm your email address here:
 
@@ -79,7 +79,7 @@ podots.com - Your favorite podcast and your favorite host await for you!
 @receiver(post_save)
 def send_password_reset_email(sender, instance, created, **kwargs):
     if created and isinstance(instance, PasswordResetRequest):
-        subject, from_email, to = 'Reset password for your account on podots.com', 'bot@podots.com', instance.email
+        subject, from_email, to = 'Reset password for your account on podots.com', 'noreply@podots.com', instance.email
         text_content = """
 Finish resetting your password by following the link:
 
