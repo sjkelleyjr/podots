@@ -185,11 +185,12 @@ LOGIN_REDIRECT_URL = '/'
 
 ACCEPT_UNINVITED_REGISTRATIONS = True
 
-EMAIL_HOST = os.environ['RDS_EMAIL_HOST']
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.environ['EMAIL_HOST']
 EMAIL_USE_SSL = True
 EMAIL_PORT = 465
-EMAIL_HOST_USER = os.environ['RDS_EMAIL_USER']
-EMAIL_HOST_PASSWORD = os.environ['RDS_EMAIL_PASS']
+EMAIL_HOST_USER = os.environ['EMAIL_USER']
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_PASS']
 
 SITE_NAME = 'Podots'
 #update these when we have a better domain name.
