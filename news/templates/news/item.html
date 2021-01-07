@@ -38,7 +38,7 @@
     {% recursetree item.comments.all  %}
             {% news_item item=node rank=None show_text=True hide_text=False user=user %}
             {% if not node.is_leaf_node %}
-            <div style="padding-left:30px;">
+            <div style="padding-left:15px;">
                     <div class="item-list">
                         {{ children }}
                     </div>

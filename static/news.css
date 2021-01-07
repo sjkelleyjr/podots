@@ -51,6 +51,10 @@ table {
   border-bottom: 1px solid #555;
 }
 
+.item-control * {
+  text-decoration: none;
+}
+
 .item-control {
   display: flex;
   align-items: center;
@@ -197,7 +201,7 @@ a:hover {
 }
 
 .green {
-  color: #bbb;
+  color: #8BC34A;
 }
 
 #header {
@@ -404,9 +408,47 @@ div.arrow-down {
   -webkit-transform: rotate(45deg);
 }
 
+.karma {
+  display: flex;
+  font-size: 12px;
+}
+
+.dropdown {
+  position: absolute;
+  display: none;
+  z-index: 1;
+  margin: 0 !important;
+  padding: 5px;
+  background-color: #222;
+  border-radius: 2px;
+  border: 1px solid #555;
+}
+
+.dropbtn {
+  padding: 10px;
+}
+
+.mobile-menu:hover .dropdown { display: inline-table; }
+
+.mobile-menu {
+  cursor: pointer;
+  display: none;
+}
+
+.controls div {
+  margin: 10px;
+}
+
 .controls {
+  display: contents;
   line-height: 6pt;
   vertical-align: text-top;
+  font-size: 12px;
+}
+
+#user-control {
+  display: contents;
+  margin: 0;
 }
 
 .formatting-help {
@@ -439,6 +481,15 @@ div.arrow-down {
     width: 100%;
     margin: 0;
     width: auto;
+    padding: 0;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  .desktop-control-item {
+    display: none;
   }
 
   .title, .comment {
@@ -472,6 +523,7 @@ div.arrow-down {
 
   .site-content-dense {
     width: auto;
+    padding: 0;
   }
 
   .vote-form {

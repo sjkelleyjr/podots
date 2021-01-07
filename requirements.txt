@@ -30,6 +30,7 @@ urllib3==1.25.9
 xattr>=0.6.4
 django-mptt==0.11.0
 mistune==0.8.4
+fontawesome-free==5.15.1
 django-ratelimit==3.0.1
 django-htmlmin==0.11.0
 django-debug-toolbar==3.2
@@ -37,4 +38,4 @@ django-htmlmin==0.11.0
 django-js-asset==1.2.2
 django-mptt==0.11.0
 django-ratelimit==3.0.1
-psycopg2==2.8.6
+psycopg2-binary==2.8.6

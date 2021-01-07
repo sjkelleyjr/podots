@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
 
+    'fontawesome-free',
     'mptt',
     'debug_toolbar',
 

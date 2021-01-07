@@ -1,10 +1,73 @@
 {% load humanize %}
 {% load news_extra %}
-<img class='gravatar-img' src={{item.user.gravatar_url}} width="25" height="25">
+
 <span class="controls">
-  <span class="smaller">
-    {{item.points}} point{{item.points|pluralize}} by {%link_user item.user%} <span class="naturaltime" data-orig-time="{{item.created_at.isoformat}}">{{item.created_at|naturaltime}}<span>
-        • <a href="{{item.get_absolute_url}}">{{item.num_comments}} comments</a></span>
-      {% if item.num_comments == 0 and item.user == request_user %}• <a href="{% url 'edit' pk=item.pk %}">edit</a></span>{% endif %}
-    {% if item.num_comments == 0 and item.user == request_user %}• <a href="{% url 'delete' pk=item.pk %}">delete</a></span>{% endif %}
+  <div id='user-control'>
+    <img class='gravatar-img' src={{item.user.gravatar_url}} width="25" height="25">
+    {%link_user item.user%}
+  </div>
+
+  <div>
+    <i class="fas fa-clock"></i>
+    <span class="naturaltime" data-orig-time="{{item.created_at.isoformat}}">{{item.created_at|naturaltime}}</span>
+  </div>
+
+  <div class='desktop-control-item'>
+    <a href="{{item.get_absolute_url}}">
+      <i class="fas fa-comment"></i>
+      {{item.num_comments}}
+    </a>
+  </div>
+
+  {% if item.num_comments == 0 and item.user == request_user %}
+  <div class='desktop-control-item'>
+    <a href="{% url 'edit' pk=item.pk %}">
+      <i class="fas fa-edit"></i>
+      edit
+    </a>
+  </div>
+  {% endif %}
+
+
+  {% if item.num_comments == 0 and item.user == request_user %}
+  <div class='desktop-control-item'>
+    <a href="{% url 'delete' pk=item.pk %}">
+      <i class="fas fa-trash-alt"></i>
+      delete
+    </a>
+  </div>
+  {% endif %}
+
+
+  <div class="mobile-menu">
+    <a class="dropbtn"><i class="fas fa-ellipsis-v"></i></a>
+    <div class="dropdown">
+
+      <div>
+        <a href="{{item.get_absolute_url}}">
+          <i class="fas fa-comment"></i>
+          {{item.num_comments}}
+        </a>
+      </div>
+
+      {% if item.num_comments == 0 and item.user == request_user %}
+      <div>
+        <a href="{% url 'edit' pk=item.pk %}">
+          <i class="fas fa-edit"></i>
+          edit
+        </a>
+      </div>
+      {% endif %}
+
+      {% if item.num_comments == 0 and item.user == request_user %}
+      <div>
+        <a href="{% url 'delete' pk=item.pk %}">
+          <i class="fas fa-trash-alt"></i>
+          delete
+        </a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
 </span>
