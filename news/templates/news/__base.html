@@ -38,7 +38,9 @@
     <div class='user-menu'>
       {% if user.is_authenticated %}
       {% url 'accounts_my_profile' as url %}
-      <div class='user-profile'> <a href="{{ url }}" {% if url == request.path %}class="active" {% endif %}>{{user}}</a> ({{user.karma}}) </div>
+      <div class='user-profile'>
+        <a href='{{ url }}' style='display: flex'><img class='gravatar-img' src={{user.gravatar_url}} width="25" height="25"></a>
+        <a href="{{ url }}" {% if url == request.path %}class="active" {% endif %}>{{user}}</a> ({{user.karma}}) </div>
       {% url 'submit' as url %}
       <form method="POST" action="{{ url }}" class="add-new-form">{% csrf_token %}<button class="add-new-button">new post</button></form>
       <form method="POST" action="{% url 'logout' %}" class="logout-form">{% csrf_token %}<button class="logout-button">logout</button></form>

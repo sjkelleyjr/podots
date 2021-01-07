@@ -1,4 +1,5 @@
 import uuid
+import requests
 
 from django.contrib.auth.models import AbstractUser
 from django.urls import reverse
@@ -36,10 +37,21 @@ class CustomUser(AbstractUser, MPTTModel):
 
     def gravatar_url(self, size=80):
         if self.email:
-            default = "https://www.example.com/default.jpg"
-            url = "https://www.gravatar.com/avatar/" + hashlib.md5(self.email.lower()).hexdigest() + "?"
+            default = "/static/user.png"
+            url = "https://www.gravatar.com/avatar/" + hashlib.md5(self.email.lower().encode('utf-8')).hexdigest() + "?"
             url += urlencode({'d':default, 's':str(size)})
-            return url
+
+            #check if the image is valid
+            image_formats = ("image/png", "image/jpeg", "image/jpg")
+            r = requests.head(url)
+
+            if r.headers["content-type"] in image_formats:
+                return url
+            else:
+                return default
+        else:
+            default = "/static/user.png"
+            return default
 
     @property
     def latest_verified_email(self):

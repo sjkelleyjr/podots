@@ -6,7 +6,7 @@
 
 
 {% block content %}
-<article class="site-content-dense">
+<article class="site-content-index">
 <div class="item-list outer level-0">
         {% for story in stories %}
                 {% news_item item=story show_text=False hide_text=hide_text rank=forloop.counter|add:rank_start user=user %}

@@ -52,6 +52,8 @@ table {
 }
 
 .item-control {
+  display: flex;
+  align-items: center;
   padding: 10px;
 }
 
@@ -247,15 +249,34 @@ main {
   align-items: center;
 }
 
+.user-profile {
+  display: flex;
+  align-items: center;
+}
+
 .user-menu button {
   margin-left: 5px;
   margin-right: 5px;
 }
 
+.site-content-index,
 .site-content-dense {
   width: 95%;
   margin: 0 auto;
   position: relative;
+}
+
+.site-content-dense {
+  padding: 20px;
+}
+
+.gravatar-img {
+  margin-right: 5px;
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 2px;
 }
 
 .highlight {

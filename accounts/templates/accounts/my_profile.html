@@ -2,6 +2,13 @@
 
 {% block content %}
 <article class="site-content-dense">
+
+  <p>
+    Your gravatar:
+  <a href='https://gravatar.com/' style='display: flex'><img class='gravatar-img' src={{user.gravatar_url}} width="25" height="25"></a>
+  <smaller>Click on the icon in order to go to gravatar.com to change your icon.</smaller>
+  </p>
+
   <form method="POST">{% csrf_token %}
     <div>
       {{form.as_p}}
