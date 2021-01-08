@@ -57,6 +57,7 @@ table {
 
 .item-control {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   padding: 10px;
 }
@@ -116,9 +117,15 @@ table {
   color: #fff;
 }
 
+.description-more {
+  font-size: 12px;
+  padding-left: 10px;
+}
+
 .description {
   color: rgba(55, 53, 47, 0.6);
   font-size: 12px;
+  padding-left: 10px;
 }
 
 input:hover,
@@ -284,7 +291,7 @@ main {
 }
 
 .highlight {
-  background-color: #DCEDC8;
+  background-color: #123823;
 }
 
 .self-item {
@@ -305,10 +312,6 @@ main {
 
 .title>a:visited {
   color: #999;
-}
-
-.description {
-  padding-left: 10px;
 }
 
 .pnname {
@@ -408,11 +411,6 @@ div.arrow-down {
   -webkit-transform: rotate(45deg);
 }
 
-.karma {
-  display: flex;
-  font-size: 12px;
-}
-
 .dropdown {
   position: absolute;
   display: none;
@@ -482,14 +480,6 @@ div.arrow-down {
     margin: 0;
     width: auto;
     padding: 0;
-  }
-
-  .mobile-menu {
-    display: block;
-  }
-
-  .desktop-control-item {
-    display: none;
   }
 
   .title, .comment {

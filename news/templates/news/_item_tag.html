@@ -20,11 +20,6 @@
         {% endif %}
       </div>
 
-      <div class=karma>
-        <i class="fas fa-star-half-alt" style="margin-right: 5px;"></i>
-        {{item.points}}
-      </div>
-
       <div class='item-button'>
         {% if 'down' in assignment_options %}
         <form class="vote-form downvote" method="POST" action="{% url 'downvote' pk=item.pk %}">{% csrf_token %}<button type="submit" class="vote-button" aria-label="Downvote">

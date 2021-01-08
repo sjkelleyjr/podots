@@ -1,19 +1,32 @@
 {% load news_extra %}
+{% load humanize %}
 
 <div>
-                    {% if item.title %}
-                    <span class="title">
-                        {% if item.url %}
-                            <a rel="ugc" href="{{item.url}}">{{item.title}}</a> {% if item.domain %}<span class="smaller">(<a href="{% url 'newest' %}?site={{item.domain}}">{{item.domain}}</a>)</span>{% endif %}
-                        {% else %}
-                            <a href="{{item.get_absolute_url}}">{{item.title}}</a>
-                        {% endif %}
-                    </span>
-                    {% endif %}
-                    {% if item.text and not hide_text %}
-                        <div class='description'>{{ item.text | comment_markdown }}</div>
-                    {% endif %}
-                    {% if item.text and hide_text %}
-                        <div class='description'>{{ item.text | slice:":200" | comment_markdown }}</div>
-                    {% endif %}
+  {% if item.title %}
+  <span class="title">
+    {% if item.url %}
+    <a rel="ugc" href="{{item.url}}">{{item.title}}</a>
+    {% if item.domain %}
+    <span class="smaller">(<a href="{% url 'newest' %}?site={{item.domain}}">{{item.domain}}</a>)</span>
+    {% endif %}
+    {% else %}
+    <a href="{{item.get_absolute_url}}">{{item.title}}</a>
+    {% endif %}
+  </span>
+  {% endif %}
+
+  <span class="smaller">
+    <i class="fas fa-clock"></i>
+    <span class="naturaltime" data-orig-time="{{item.created_at.isoformat}}">{{item.created_at|naturaltime}}</span>
+  </span>
+
+  {% if item.text and not hide_text %}
+  <div class='description'>{{ item.text | comment_markdown }}</div>
+  {% endif %}
+  {% if item.text and hide_text %}
+  <div class='description'>{{ item.text | slice:":200" | comment_markdown }}</div>
+  {% if item.text|length > 200 %}
+  <a class='description-more' href="{{item.get_absolute_url}}"> Show more</a>
+  {% endif %}
+  {% endif %}
 </div>
