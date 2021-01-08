@@ -27,7 +27,7 @@
   </div>
   {% endif %}
 
-  {% if item.num_comments == 0 and item.user == request_user %}
+  {% if item.user == request_user %}
   <div>
     <a href="{% url 'delete' pk=item.pk %}">
       <i class="fas fa-trash-alt"></i>
