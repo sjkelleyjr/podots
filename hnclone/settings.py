@@ -30,10 +30,6 @@ DEBUG = False
 
 USE_X_FORWARDED_HOST = True
 ALLOWED_HOSTS = [
-    '172.31.8.61',
-    '172.31.54.181',
-    '172.31.32.11',
-    '172.31.22.249',
     'localhost',
     'hacker-public-radio-dev.us-west-2.elasticbeanstalk.com',
     'podots.com'
@@ -58,8 +54,8 @@ INSTALLED_APPS = [
     'accounts',
     'news',
     'emaildigest',
-
-    
+    # auto populate the allowed apps with the healthcheck IPs
+    'ebhealthcheck.apps.EBHealthCheckConfig'
 ]
 
 MIDDLEWARE = [
