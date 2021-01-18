@@ -3,14 +3,15 @@
 {% block content %}
 <article class="site-content-dense">
 <form method="POST">{% csrf_token %}
-<table>
 {{ form.as_p }}
-</table>
 <button type="submit">submit</button>
 </form>
 
 <p>
-Please only submit direct links to podcast episodes as URLs.  <br> A text description will ensure more people will interact with your submission, but it is not required.
+<b>Posting tips:</b>
+<br><b>Title:</b> Please use the following format -> [Podcast Name] - [Episode Name]
+<br><b>URL:</b> Only submit direct links to podcast episodes.
+<br><b>Text:</b> Describe what your episode is about, an excellent description drives engagement.
 </p>
 
 
