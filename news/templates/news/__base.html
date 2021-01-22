@@ -62,17 +62,25 @@
 <div class="welcome-section">
   <div class="welcome-image">
     <div id="welcome-text">
-      <h1>WELCOME TO PODOTS!</h1>
+      <h1 style="color: #8BC34A">The community to find great podcasts recommended by people just like you</h2>
+      <h4>Podots is a platform that enables people to share quality podcasts.</h4>
 
-      <h2 style="color: #8BC34A">You don't know what podcast to listen next?</h2>
-      <h3>Are all the platforms recommending the same shows?</h3>
-      <h4>Let other people recommend you what's best and fresh, all in endless pages of awesomeness.</h4>
-      <h3>Create an account now and submit your favorite podcast!</h3>
+      <a id='create-account-button' href="{{ url }}" {% if url == request.path %}class="active" {% endif %}>I want to join</a>
 
-      <a id='create-account-button' href="{{ url }}" {% if url == request.path %}class="active" {% endif %}>Create an account!</a>
+      <br>
+      <br>
+      <br>
 
-      <br><br>
-      <p> This message will automagically disappear when you login into your account. </p>
+      <div class="social-proof" style="display:flex; align-items:center;">
+        <img src="{% static 'paval.jpg'%}" style="border-radius:25px; margin-right:10px;" width="50" height="50">
+        <div style="display:block;">
+          <p><em> "I post here all the podcasts that inspire me."</em></p>
+          <p><small> Alex Paval - Co-Founder of Podots </small></p>
+        </div>
+      </div>
+
+    </div>
+    <div id="welcome-visual">
     </div>
   </div>
 </div>

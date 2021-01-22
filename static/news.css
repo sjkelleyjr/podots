@@ -79,13 +79,26 @@ table {
   background-position: bottom, bottom;
   width: auto;
   height: 100%;
+  display:flex;
 }
 
 #welcome-text {
-  width: 85%;
-  margin: auto;
+  margin: 20px;
+  margin-left: 8vw;
   padding-top: 50px;
   padding-bottom: 50px;
+}
+
+#welcome-visual {
+  background: url('visual.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 50vh;
+  flex: 0 1 90vw;
+  margin: 20px;
+  margin-right: 8vw;
+  border-radius: 5px;
 }
 
 .more-link:hover,
@@ -527,5 +540,14 @@ div.arrow-down {
 
   .vote-button {
     padding-top: 8px;
+  }
+
+  .welcome-image {
+    display:block;
+  }
+
+  #welcome-text,
+  #welcome-visual {
+    margin: 5vw;
   }
 }
